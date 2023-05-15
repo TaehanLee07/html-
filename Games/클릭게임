@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
-<he
-  <title>클릭 게임</title>
+<head>
+  <title>간단한 클릭 게임</title>
   <style>
     .score {
       font-size: 24px;
-      color: blue; 
+      color: blue;
     }
     h1 {
-      color: green; 
+      color: green;
     }
     p {
-      color: red; 
+      color: red;
+    }
+    #clickButton {
+      font-size: 36px;
+      padding: 10px 20px;
     }
   </style>
 </head>
@@ -33,9 +37,10 @@
       gameStarted = true;
       document.getElementById("startButton").disabled = true;
       document.getElementById("clickButton").disabled = false;
+      document.getElementById("clickButton").focus(); // 클릭 버튼에 포커스
       startTime = Date.now();
       updateTimer(); // 타이머 업데이트 시작
-      setTimeout(endGame, 11000); // 5초 후에 게임 종료
+      setTimeout(endGame, 11000); // 게임 종료
     }
 
     function incrementScore() {
@@ -65,8 +70,3 @@
   </script>
 </body>
 </html>
-// 성준 : 90
-// 곽권 : 47
-// 민준 : 100
-// 민성 : 121
-// 인서 : 132
