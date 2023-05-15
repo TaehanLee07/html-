@@ -15,7 +15,7 @@
     }
     #clickButton {
       font-size: 36px;
-      padding: 10px 20px;
+      padding: 20px;
     }
   </style>
 </head>
@@ -38,12 +38,14 @@
       document.getElementById("startButton").disabled = true;
       document.getElementById("clickButton").disabled = false;
       document.getElementById("clickButton").focus(); // 클릭 버튼에 포커스
-      startTime = Date.now();
-      updateTimer(); // 타이머 업데이트 시작
-      setTimeout(endGame, 11000); // 게임 종료
+      startTime = 0;
     }
 
     function incrementScore() {
+      if (gameStarted && startTime === 0) {
+        startTime = Date.now();
+        updateTimer(); // 타이머 업데이트 시작
+      }
       if (gameStarted) {
         score += 1;
         document.getElementById("score").innerHTML = score;
@@ -51,7 +53,7 @@
     }
 
     function updateTimer() {
-      if (gameStarted) {
+      if (gameStarted && startTime !== 0) {
         var elapsedTime = Math.floor((Date.now() - startTime) / 1000); // 경과 시간 계산 (초)
         document.getElementById("time").innerHTML = elapsedTime;
         setTimeout(updateTimer, 1000); // 1초마다 타이머 업데이트
